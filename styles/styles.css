@@ -1,32 +1,21 @@
-body{
+
+#border{
     border-style: solid;
     border-color: #4b5257;
-    border-width: 50px;
+    border-width: 5px;
 }
 
 #datePic{
     width: 500px;
     height: 500px;
-    margin-left: 750px;
-    display: block;
+    margin-left: 575px;
+    margin-top: -485px;
+    margin-bottom: 25px;
+    display: inline-block;
 }
 
 p{
     margin-right: 550px;
-    margin-left: 50px;
+    margin-left: 30px;
     font-style: italic;
-}
-
-h1{
-    text-align: left;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-h4{
-    text-align: left;
-}
-
-button{
-
 }
