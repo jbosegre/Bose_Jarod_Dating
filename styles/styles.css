@@ -1,11 +1,32 @@
+body{
+    border-style: solid;
+    border-color: #4b5257;
+    border-width: 50px;
+}
+
 #datePic{
-    float: right;
     width: 500px;
     height: 500px;
+    margin-left: 750px;
+    display: block;
 }
 
 p{
-    float: left;
-    margin-right: 250px;
+    margin-right: 550px;
+    margin-left: 50px;
     font-style: italic;
+}
+
+h1{
+    text-align: left;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h4{
+    text-align: left;
+}
+
+button{
+
 }
