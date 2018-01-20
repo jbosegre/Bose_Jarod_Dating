@@ -14,9 +14,6 @@ require_once('vendor/autoload.php');
 //Create an instance of the Base class
 $f3 = Base::instance();
 
-//global view directory
-$template =  new Template();
-
 //define a default route
 $f3->route('GET /', function()
 {
@@ -25,3 +22,6 @@ $f3->route('GET /', function()
     ('pages/home.html');
 }
 );
+
+//Run fat free
+$f3->run();

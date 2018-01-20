@@ -1,0 +1,11 @@
+#datePic{
+    float: right;
+    width: 500px;
+    height: 500px;
+    resize: vertical;
+}
+
+p{
+    float: left;
+    margin-right: 250px;
+}
