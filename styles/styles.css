@@ -1,8 +1,15 @@
 
 #border{
+    margin-top: 25px;
     border-style: solid;
     border-color: #4b5257;
-    border-width: 5px;
+    border-width: 1px;
+}
+
+#navHeader{
+    height: 5vh;
+    background-color:lightgray;
+    background-size: cover;
 }
 
 #datePic{
