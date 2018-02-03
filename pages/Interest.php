@@ -38,7 +38,112 @@ error_reporting(E_ALL);
 <div class="container">
     <figure id="border">
         <figcaption>
-
+            <h1 class="ml-5"><br><strong>Interest</strong></h1>
+            <form action="" method="post">
+                <fieldset form="form-group">
+                    <div class="form-group ml-lg-2">
+                        <label class="d-block" id="InputTitle2">Indoor Activities</label>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="TV"> TV
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Movies"> Movies
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Cooking"> Cooking
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Board_Games">
+                                Board Games
+                            </label>
+                        </div>
+                         <br>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Puzzles"> Puzzles
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Reading"> Reading
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Playing_Cards">
+                                Playing Cards
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Video_Games">
+                                Video Games
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group ml-lg-2">
+                        <label class="d-block" id="InputTitle2">Outdoor Activities</label>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Hiking"> Hiking
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Biking"> Biking
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Swimming">
+                                Swimming
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Collecting">
+                                Collecting
+                            </label>
+                        </div>
+                        <br>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Walking">
+                                Walking
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Climbing">
+                                Climbing
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Winter_Sports">
+                                Snowboarding/Skiing
+                            </label>
+                        </div>
+                        <div class="form-check form-check-inline ml-5">
+                            <label class="form-check-label">
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Gardening">
+                                Gardening
+                            </label>
+                        </div>
+                    </div>
+                    <div id="adjustButton">
+                        <button class="btn btn-primary ml-5">Back</button>
+                        <button class="btn btn-primary" id="nextPage">Next</button>
+                    </div>
+                </fieldset>
+            </form>
         </figcaption>
     </figure>
 </div>

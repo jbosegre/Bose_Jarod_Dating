@@ -39,7 +39,7 @@ error_reporting(E_ALL);
     <figure id="border">
         <figcaption>
             <h1 class="ml-5"><br><strong>Personal Information</strong></h1>
-            <form>
+            <form action="" method="post">
                 <fieldset form="form-group">
                     <div class="col-lg-6">
                         <p id="InputTitle4">First Name</p>
@@ -94,6 +94,25 @@ if(!empty($_POST)) {
 
     $isValid = true;
 
+    if(!empty($_POST["firstName"]))
+    {
+        $name = $_POST["firstName"];
+    }
+    else
+    {
+        echo"<p>First Name is missing</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["lastName"]))
+    {
+        $name = $_POST["name"];
+    }
+    else
+    {
+        echo"<p>Name is missing</p>";
+        $isValid = false;
+    }
     if (!empty($_POST["email"])) {
         $email = $_POST["email"];
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
