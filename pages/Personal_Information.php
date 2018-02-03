@@ -42,7 +42,7 @@ error_reporting(E_ALL);
             <form>
                 <fieldset form="form-group">
                     <div class="col-lg-6">
-                        <p id="InputTitle">First Name</p>
+                        <p id="InputTitle4">First Name</p>
                         <input class="form-control ml-5" type="text" name="firstName" placeholder="First Name">
                     </div>
                     <div id="box">
@@ -83,5 +83,29 @@ error_reporting(E_ALL);
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
+
+<pre>
+<?php
+if(!empty($_POST)) {
+
+    print_r($_POST);
+
+    include('Bose_Jarod_Assn_5b_Forms_II_Functions.php');
+
+    $isValid = true;
+
+    if (!empty($_POST["email"])) {
+        $email = $_POST["email"];
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email format";
+            $isValid = false;
+        }
+    } else {
+        echo "<p>Email is missing</p>";
+        $isValid = false;
+    }
+}
+?>
+</pre>
 </body>
 </html>

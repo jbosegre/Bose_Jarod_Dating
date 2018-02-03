@@ -24,17 +24,30 @@
 #InputTitle{
     margin-top: 50px;
     margin-left: 50px;
+    margin-bottom: -50px;
     font-weight: bold;
 }
 
 #InputTitle3{
-    margin-left: 50px;
-    font-weight: bold;
-}
+     margin-left: 50px;
+     font-weight: bold;
+ }
 
 #InputTitle2{
     margin-top: 10px;
     margin-left: 50px;
+    font-weight: bold;
+}
+
+#InputTitle4{
+    margin-left: 50px;
+    margin-top: -40px;
+    font-weight: bold;
+}
+
+#InputTitle5{
+    margin-top: 50px;
+    margin-bottom: -50px;
     font-weight: bold;
 }
 
@@ -72,4 +85,14 @@
 #adjustButton{
     margin-top: 50px;
     margin-bottom: 50px;
+}
+
+#biography{
+    width: 400px;
+    height: 100px;
+    padding: 10px;
+    margin-left: 600px;
+    margin-top: -485px;
+    margin-bottom: 25px;
+    display: inline-block;
 }

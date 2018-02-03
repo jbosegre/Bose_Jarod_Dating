@@ -38,24 +38,34 @@ error_reporting(E_ALL);
 <div class="container">
     <figure id="border">
         <figcaption>
-            <h1 class="ml-5"><br><strong>My Dating Website</strong></h1>
-            <p id="summary">Welcome to the web's most successful dating website. <strong>At My Dating</strong>
-                Website you'll meet another like minded individuals. We have the
-                highest success rate of couples on the web. User's are matched by
-                interest and location. Find out why so many others have found love on
-                our site<br><br>
-            </p>
-            <h4 class="ml-5"><strong>Hear what our users are saying about us.</strong></h4>
-            <p id="review">"I met the love of my life after only a month" - Andrea<br><br>
-                "It was so easy to set up and profile and start meeting people.
-                I didn't realize how many others were looking for love in my
-                area." -John Smith<br><br>
-                "Just try it! You'll never be the same!" - Sarah</p><br><br>
-            <button class="btn btn-primary ml-5">Create a Profile!</button>
+            <h1 class="ml-5"><br><strong>Personal Information</strong></h1>
+            <form>
+                <fieldset form="form-group">
+                    <div class="col-lg-6" id="InputTitle5">
+                        <p id="InputTitle4">Email</p>
+                        <input class="form-control ml-5" type="text" name="email" placeholder="Email">
+                    </div>
+                    <div class="col-lg-5" id="biography">
+                        <p id="InputTitle4">Biography</p>
+                        <textarea class="form-control ml-5" rows="6" name="biography"></textarea>
+                    </div>
+                    <div class="col-lg-6">
+                        <p id="InputTitle3">State</p>
+                        <input class="form-control ml-5" type="text" name="state" placeholder="Washington">
+                    </div>
+                    <div class="col-lg-6">
+                        <p id="InputTitle2">Seeking</p>
+                        &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Male
+                        <input class="ml-2" type="radio" name="male">
+                        &nbsp Female <input type="radio" name="female">
+                    </div>
+                    <div id="adjustButton">
+                        <button class="btn btn-primary ml-5">Back</button>
+                        <button class="btn btn-primary" id="nextPage">Next</button>
+                    </div>
+                </fieldset>
+            </form>
         </figcaption>
-        <img id="datePic" class="img-fluid rounded"
-             src="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/images/best-dating-website.jpg"
-             alt="Dating Picture">
     </figure>
 </div>
 <script src="js/jquery.slim.min.js"></script>
