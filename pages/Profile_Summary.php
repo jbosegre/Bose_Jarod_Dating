@@ -6,10 +6,12 @@
  * Time: 11:52 AM
  */
 
-session_start();
 //error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+//start session
+session_start();
 ?>
 
 <!doctype html>
@@ -37,7 +39,26 @@ error_reporting(E_ALL);
 </nav>
 <div class="container">
     <figure id="border">
+        <img id="profilePic" class="img-fluid rounded"
+             src="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/images/profile_pic.jpg"
+             alt="Profile Picture">
         <figcaption>
+            <div>
+                <table>
+                    <tr><th>Name: </th></tr>
+                    <tr><td>Gender: </td></tr>
+                    <tr><td>Age: </td></tr>
+                    <tr><td>Phone: </td></tr>
+                    <tr><td>Email: </td></tr>
+                    <tr><td>State: </td></tr>
+                    <tr><td>Seeking: </td></tr>
+                    <tr><td>Interest: </td></tr>
+                </table>
+            </div>
+            <div id="adjustButton">
+                <button class="btn btn-primary ml-5">Back</button>
+                <button class="btn btn-primary" id="contact">Contact Me!</button>
+            </div>
         </figcaption>
     </figure>
 </div>

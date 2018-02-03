@@ -6,10 +6,12 @@
  * Time: 11:43 AM
  */
 
-session_start();
 //error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+//start session
+session_start();
 ?>
 
 <!doctype html>
@@ -63,8 +65,8 @@ error_reporting(E_ALL);
                     <div class="col-lg-6">
                         <p id="InputTitle2">Gender</p>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Male
-                        <input class="ml-2" type="radio" name="male">
-                        &nbsp Female <input type="radio" name="female">
+                        <input class="ml-2" type="radio" name="gender" value="male">
+                        &nbsp Female <input type="radio" name="gender" value="female">
                     </div>
                     <div class="col-lg-6">
                         <p id="InputTitle2">Phone Number</p>
@@ -88,39 +90,47 @@ error_reporting(E_ALL);
 <?php
 if(!empty($_POST)) {
 
-    print_r($_POST);
-
-    include('Bose_Jarod_Assn_5b_Forms_II_Functions.php');
+    include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
 
     $isValid = true;
 
-    if(!empty($_POST["firstName"]))
+    if(!empty($_POST["firstName"]) && validName($_POST["firstName"]))
     {
-        $name = $_POST["firstName"];
+        $_SESSION["firstName"] = $_POST["firstName"];
     }
     else
     {
-        echo"<p>First Name is missing</p>";
+        echo"<p>First Name is missing or is not using alphabets only</p>";
         $isValid = false;
     }
 
-    if(!empty($_POST["lastName"]))
+    if(!empty($_POST["lastName"]) && validName($_POST["lastName"]))
     {
-        $name = $_POST["name"];
+        $_SESSION["lastName"] = $_POST["lastName"];
     }
     else
     {
-        echo"<p>Name is missing</p>";
+        echo"<p>Last Name is missing or is not using alphabets only</p>";
         $isValid = false;
     }
-    if (!empty($_POST["email"])) {
-        $email = $_POST["email"];
-        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-            echo "Invalid email format";
-            $isValid = false;
-        }
-    } else {
-        echo "<p>Email is missing</p>";
+
+    if(!empty($_POST["gender"]))
+    {
+        $_SESSION["gender"] = $_POST["gender"];
+    }
+    else
+    {
+        echo"<p>Gender is missing</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["phoneNumber"]) && validPhone($_POST["phoneNumber"]))
+    {
+        $_SESSION["phoneNumber"] = $_POST["phoneNumber"];
+    }
+    else
+    {
+        echo"<p>Phone is either missing, not numeric, or is not in 10 digits only</p>";
         $isValid = false;
     }
 }

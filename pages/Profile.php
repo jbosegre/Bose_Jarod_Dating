@@ -6,10 +6,12 @@
  * Time: 11:43 AM
  */
 
-session_start();
 //error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+//session start
+session_start();
 ?>
 
 <!doctype html>
@@ -68,6 +70,29 @@ error_reporting(E_ALL);
         </figcaption>
     </figure>
 </div>
+
+<pre>
+    <?php
+    if(!empty($_POST)) {
+
+        include('Bose_Jarod_Assn_5b_Forms_II_Functions.php');
+
+        $isValid = true;
+
+        if(!empty($_POST["email"]))
+            if (!empty($_POST["email"])) {
+                $_SESSION["email"] = $_POST["email"];
+                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+                    echo "Invalid email format";
+                    $isValid = false;
+                }
+            } else {
+                echo "<p>Email is missing</p>";
+                $isValid = false;
+            }
+    }
+    ?>
+</pre>
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

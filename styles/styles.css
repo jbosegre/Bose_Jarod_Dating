@@ -21,6 +21,15 @@
     display: inline-block;
 }
 
+#profilePic{
+    width: 350px;
+    height: 300px;
+    margin-left: 675px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    display: inline-block;
+}
+
 #InputTitle{
     margin-top: 50px;
     margin-left: 50px;
@@ -95,4 +104,8 @@
     margin-top: -485px;
     margin-bottom: 25px;
     display: inline-block;
+}
+
+table, th, td {
+    border: 1px solid lightgray;
 }

@@ -6,10 +6,12 @@
  * Time: 11:44 AM
  */
 
-session_start();
 //error reporting
 ini_set('display_errors', 1);
 error_reporting(E_ALL);
+
+//start session
+session_start();
 ?>
 
 <!doctype html>
