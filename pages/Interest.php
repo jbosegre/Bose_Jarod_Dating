@@ -62,8 +62,8 @@ session_start();
                         </div>
                         <div class="form-check form-check-inline ml-5">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Board_Games">
-                                Board Games
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Boards_Cards">
+                                Board and Card Games
                             </label>
                         </div>
                          <br>
@@ -79,14 +79,14 @@ session_start();
                         </div>
                         <div class="form-check form-check-inline ml-5">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Playing_Cards">
-                                Playing Cards
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Video_Games">
+                                Video Games
                             </label>
                         </div>
                         <div class="form-check form-check-inline ml-5">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Video_Games">
-                                Video Games
+                                <input class="form-check-input" type="checkbox" name="indoor[]" value="Others">
+                                Others
                             </label>
                         </div>
                     </div>
@@ -129,14 +129,14 @@ session_start();
                         </div>
                         <div class="form-check form-check-inline ml-5">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Winter_Sports">
-                                Snowboarding/Skiing
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Gardening">
+                                Gardening
                             </label>
                         </div>
                         <div class="form-check form-check-inline ml-5">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Gardening">
-                                Gardening
+                                <input class="form-check-input" type="checkbox" name="outdoor[]" value="Others">
+                                Others
                             </label>
                         </div>
                     </div>
@@ -149,6 +149,35 @@ session_start();
         </figcaption>
     </figure>
 </div>
+
+<?php
+if(!empty($_POST)) {
+
+    include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
+
+    $isValid = true;
+    $inDoor = array("TV", "Movies", "Cooking", "Boards_Cards", "Puzzles", "Reading", "Video_Games", "Others");
+    $outDoor = array("Hiking", "Biking", "Swimming", "Collecting", "Walking", "Climbing", "Gardening", "Others");
+
+    if(isset($_POST["indoor[]"]) && validIndoor($_POST["indoor[]"], $inDoor))
+    {
+        $_SESSION["indoor[]"] = $_POST["indoor[]"];
+    }
+    else{
+        echo "Please enter your favorite indoor hobby or select others";
+        $isValid = false;
+    }
+
+    if(isset($_POST["outdoor[]"]) && validIndoor($_POST["outdoor[]"], $outDoor))
+    {
+        $_SESSION["outdoor[]"] = $_POST["outdoor[]"];
+    }
+    else{
+        echo "Please enter your favorite outdoor hobby or select others";
+        $isValid = false;
+    }
+}
+?>
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

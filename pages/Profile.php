@@ -58,8 +58,8 @@ session_start();
                     <div class="col-lg-6">
                         <p id="InputTitle2">Seeking</p>
                         &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp Male
-                        <input class="ml-2" type="radio" name="male">
-                        &nbsp Female <input type="radio" name="female">
+                        <input class="ml-2" type="radio" name="seekGender" value="male">
+                        &nbsp Female <input type="radio" name="seekGender" value="female">
                     </div>
                     <div id="adjustButton">
                         <button class="btn btn-primary ml-5">Back</button>
@@ -75,21 +75,45 @@ session_start();
     <?php
     if(!empty($_POST)) {
 
-        include('Bose_Jarod_Assn_5b_Forms_II_Functions.php');
+        include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
 
         $isValid = true;
 
-        if(!empty($_POST["email"]))
-            if (!empty($_POST["email"])) {
-                $_SESSION["email"] = $_POST["email"];
-                if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                    echo "Invalid email format";
-                    $isValid = false;
-                }
-            } else {
-                echo "<p>Email is missing</p>";
+
+        if (!empty($_POST["email"])) {
+            $_SESSION["email"] = $_POST["email"];
+            if (!filter_var($_SESSION["email"], FILTER_VALIDATE_EMAIL)) {
+                echo "Invalid email format";
+                $isValid = false;
+            }}
+            else {
+                echo "<p>Please input your email in the correct format</p>";
                 $isValid = false;
             }
+
+        if(!empty($_POST["state"])){
+            $_SESSION["state"] = $_POST["state"];
+        }
+        else{
+            echo "<p>Please enter the US state you are currently in</p>";
+            $isValid = false;
+        }
+
+        if(!empty($_POST["biography"])){
+            $_SESSION["biography"] = $_POST["biography"];
+        }
+        else{
+            echo "<p>Please enter a Biography of you</p>";
+            $isValid = false;
+        }
+
+        if(isset($_POST["seekGender"])){
+            $_SESSION["seekGender"] = $_POST["seekGender"];
+        }
+        else{
+            echo "<p>Please enter the gender you are matching for</p>";
+            $isValid = false;
+        }
     }
     ?>
 </pre>

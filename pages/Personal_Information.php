@@ -100,7 +100,7 @@ if(!empty($_POST)) {
     }
     else
     {
-        echo"<p>First Name is missing or is not using alphabets only</p>";
+        echo"<p>Please enter your First Name</p>";
         $isValid = false;
     }
 
@@ -110,17 +110,17 @@ if(!empty($_POST)) {
     }
     else
     {
-        echo"<p>Last Name is missing or is not using alphabets only</p>";
+        echo"<p>Please enter your Last Name</p>";
         $isValid = false;
     }
 
-    if(!empty($_POST["gender"]))
+    if(isset($_POST["gender"]))
     {
         $_SESSION["gender"] = $_POST["gender"];
     }
     else
     {
-        echo"<p>Gender is missing</p>";
+        echo"<p>Please Enter your Gender</p>";
         $isValid = false;
     }
 
@@ -130,7 +130,7 @@ if(!empty($_POST)) {
     }
     else
     {
-        echo"<p>Phone is either missing, not numeric, or is not in 10 digits only</p>";
+        echo"<p>Please enter your phone number in ten digits only</p>";
         $isValid = false;
     }
 }
