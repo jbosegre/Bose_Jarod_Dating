@@ -1,3 +1,9 @@
+<!--
+    Jarod Bose
+    2/2/2018
+    Assignment 2 Dating site
+    Personal Information page showing inputs for user name, gender, and phone number
+-->
 <?php
 /**
  * Created by PhpStorm.
@@ -7,14 +13,72 @@
  */
 
 //error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 //start session
+ob_start();
 session_start();
+
+if(!empty($_POST)) {
+
+    require('../model/DataValidation.php');
+
+    $isValid = true;
+
+    if(!empty($_POST["firstName"]) && validName($_POST["firstName"]))
+    {
+        $_SESSION["firstName"] = $_POST["firstName"];
+    }
+    else
+    {
+        echo"<p>Please enter your First Name</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["lastName"]) && validName($_POST["lastName"]))
+    {
+        $_SESSION["lastName"] = $_POST["lastName"];
+    }
+    else
+    {
+        echo"<p>Please enter your Last Name</p>";
+        $isValid = false;
+    }
+
+    if(isset($_POST["gender"]))
+    {
+        $_SESSION["gender"] = $_POST["gender"];
+    }
+    else
+    {
+        echo"<p>Please Enter your Gender</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["phoneNumber"]) && validPhone($_POST["phoneNumber"]))
+    {
+        $_SESSION["phoneNumber"] = $_POST["phoneNumber"];
+    }
+    else
+    {
+        echo"<p>Please enter your phone number in ten digits only</p>";
+        $isValid = false;
+    }
+
+    if(isset($_POST['submit'])) {
+        if($isValid){
+            //clean the buffer for allowing to ridirect to next page
+            ob_end_clean();
+            //redirect to next page
+            header("Location: Profile.php");
+            exit;
+        }
+    }
+}
 ?>
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -73,8 +137,7 @@ session_start();
                         <input class="form-control ml-5" type="text" name="phoneNumber" placeholder="Phone Number">
                     </div>
                     <div id="adjustButton">
-                        <button class="btn btn-primary ml-5">Back</button>
-                        <button class="btn btn-primary" id="nextPage">Next</button>
+                        <a href="Profile.php"><button class="btn btn-primary" name="submit" type="submit">Next</button></a>
                     </div>
                 </fieldset>
             </form>
@@ -85,56 +148,5 @@ session_start();
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 <script src="js/scripts.js"></script>
-
-<pre>
-<?php
-if(!empty($_POST)) {
-
-    include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
-
-    $isValid = true;
-
-    if(!empty($_POST["firstName"]) && validName($_POST["firstName"]))
-    {
-        $_SESSION["firstName"] = $_POST["firstName"];
-    }
-    else
-    {
-        echo"<p>Please enter your First Name</p>";
-        $isValid = false;
-    }
-
-    if(!empty($_POST["lastName"]) && validName($_POST["lastName"]))
-    {
-        $_SESSION["lastName"] = $_POST["lastName"];
-    }
-    else
-    {
-        echo"<p>Please enter your Last Name</p>";
-        $isValid = false;
-    }
-
-    if(isset($_POST["gender"]))
-    {
-        $_SESSION["gender"] = $_POST["gender"];
-    }
-    else
-    {
-        echo"<p>Please Enter your Gender</p>";
-        $isValid = false;
-    }
-
-    if(!empty($_POST["phoneNumber"]) && validPhone($_POST["phoneNumber"]))
-    {
-        $_SESSION["phoneNumber"] = $_POST["phoneNumber"];
-    }
-    else
-    {
-        echo"<p>Please enter your phone number in ten digits only</p>";
-        $isValid = false;
-    }
-}
-?>
-</pre>
 </body>
 </html>

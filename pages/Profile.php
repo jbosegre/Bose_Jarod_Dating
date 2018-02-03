@@ -1,3 +1,9 @@
+<!--
+    Jarod Bose
+    2/2/2018
+    Assignment 2 Dating site
+    Profile page showing inputs for state, email, biography and gender to seek for
+-->
 <?php
 /**
  * Created by PhpStorm.
@@ -7,11 +13,69 @@
  */
 
 //error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 //session start
+ob_start();
 session_start();
+
+if(!empty($_POST)) {
+
+    require('../model/DataValidation.php');
+
+    $isValid = true;
+
+
+    if (!empty($_POST["email"])) {
+        $email = $_POST["email"];
+        $_SESSION["email"] = $_POST["email"];
+        if (!filter_var($_SESSION["email"], FILTER_VALIDATE_EMAIL)) {
+            echo "Invalid email format";
+            $isValid = false;
+        }}
+    else {
+        echo "<p>Please input your email in the correct format</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["state"])){
+        $state = $_POST["state"];
+        $_SESSION["state"] = $_POST["state"];
+    }
+    else{
+        echo "<p>Please enter the US state you are currently in</p>";
+        $isValid = false;
+    }
+
+    if(!empty($_POST["biography"])){
+        $biography = $_POST["biography"];
+        $_SESSION["biography"] = $_POST["biography"];
+    }
+    else{
+        echo "<p>Please enter a Biography of you</p>";
+        $isValid = false;
+    }
+
+    if(isset($_POST["seekGender"])){
+        $seekGender = $_POST["seekGender"];
+        $_SESSION["seekGender"] = $_POST["seekGender"];
+    }
+    else{
+        echo "<p>Please enter the gender you are matching for</p>";
+        $isValid = false;
+    }
+
+    if(isset($_POST['submit'])) {
+        if($isValid){
+            //clean the buffer for allowing to ridirect to next page
+            ob_end_clean();
+            //redirect to next page
+            header("Location: Interest.php");
+            exit;
+        }
+    }
+}
 ?>
 
 <!doctype html>
@@ -45,15 +109,15 @@ session_start();
                 <fieldset form="form-group">
                     <div class="col-lg-6" id="InputTitle5">
                         <p id="InputTitle4">Email</p>
-                        <input class="form-control ml-5" type="text" name="email" placeholder="Email">
+                        <input class="form-control ml-5" type="text" name="email" value="<?php echo $email;?>>
                     </div>
                     <div class="col-lg-5" id="biography">
                         <p id="InputTitle4">Biography</p>
-                        <textarea class="form-control ml-5" rows="6" name="biography"></textarea>
+                        <textarea class="form-control ml-5" rows="6" name="biography" value="<?php echo $biography;?>></textarea>
                     </div>
                     <div class="col-lg-6">
                         <p id="InputTitle3">State</p>
-                        <input class="form-control ml-5" type="text" name="state" placeholder="Washington">
+                        <input class="form-control ml-5" type="text" name="state" placeholder="Washington" value="<?php echo $state;?>>
                     </div>
                     <div class="col-lg-6">
                         <p id="InputTitle2">Seeking</p>
@@ -62,61 +126,13 @@ session_start();
                         &nbsp Female <input type="radio" name="seekGender" value="female">
                     </div>
                     <div id="adjustButton">
-                        <button class="btn btn-primary ml-5">Back</button>
-                        <button class="btn btn-primary" id="nextPage">Next</button>
+                        <a href="Interest.php"><button class="btn btn-primary" name="submit" type="submit">Next</button></a>
                     </div>
                 </fieldset>
             </form>
         </figcaption>
     </figure>
 </div>
-
-<pre>
-    <?php
-    if(!empty($_POST)) {
-
-        include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
-
-        $isValid = true;
-
-
-        if (!empty($_POST["email"])) {
-            $_SESSION["email"] = $_POST["email"];
-            if (!filter_var($_SESSION["email"], FILTER_VALIDATE_EMAIL)) {
-                echo "Invalid email format";
-                $isValid = false;
-            }}
-            else {
-                echo "<p>Please input your email in the correct format</p>";
-                $isValid = false;
-            }
-
-        if(!empty($_POST["state"])){
-            $_SESSION["state"] = $_POST["state"];
-        }
-        else{
-            echo "<p>Please enter the US state you are currently in</p>";
-            $isValid = false;
-        }
-
-        if(!empty($_POST["biography"])){
-            $_SESSION["biography"] = $_POST["biography"];
-        }
-        else{
-            echo "<p>Please enter a Biography of you</p>";
-            $isValid = false;
-        }
-
-        if(isset($_POST["seekGender"])){
-            $_SESSION["seekGender"] = $_POST["seekGender"];
-        }
-        else{
-            echo "<p>Please enter the gender you are matching for</p>";
-            $isValid = false;
-        }
-    }
-    ?>
-</pre>
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/tether.min.js"></script>
 <script src="js/bootstrap.min.js"></script>

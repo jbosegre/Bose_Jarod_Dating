@@ -1,3 +1,10 @@
+<!--
+    Jarod Bose
+    2/2/2018
+    Assignment 2 Dating site
+    Profile Summary page showing users inputs
+-->
+
 <?php
 /**
  * Created by PhpStorm.
@@ -7,11 +14,24 @@
  */
 
 //error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 //start session
+ob_start();
 session_start();
+
+$fname = $_SESSION['firstName'];
+$lname = $_SESSION['lastName'];
+$gender = $_SESSION['gender'];
+$age = $_SESSION['age'];
+$phoneNumber = $_SESSION['phoneNumber'];
+$email = $_SESSION['email'];
+$state = $_SESSION['state'];
+$seekGender = $_SESSION['seekGender'];
+$indoor = $_SESSION['indoor[]'];
+$outdoor = $_SESSION['outdoor[]'];
+$biography = $_SESSION['biography'];
 ?>
 
 <!doctype html>
@@ -23,7 +43,7 @@ session_start();
           href="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/styles/styles.css?<?php echo time(); ?>">
     <link rel="stylesheet"
           href="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/styles/css/bootstrap.min.css">
-    <title>Profile Sumary</title>
+    <title>Profile Summary</title>
 </head>
 <body>
 <nav class="nav-pills navbar-inverse navbar-toggleable-sm" style="background-color: lightgray;">
@@ -39,27 +59,38 @@ session_start();
 </nav>
 <div class="container">
     <figure id="border">
-        <img id="profilePic" class="img-fluid rounded"
-             src="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/images/profile_pic.jpg"
-             alt="Profile Picture">
         <figcaption>
             <div>
                 <table>
-                    <tr><th>Name: </th></tr>
-                    <tr><td>Gender: </td></tr>
-                    <tr><td>Age: </td></tr>
-                    <tr><td>Phone: </td></tr>
-                    <tr><td>Email: </td></tr>
-                    <tr><td>State: </td></tr>
-                    <tr><td>Seeking: </td></tr>
-                    <tr><td>Interest: </td></tr>
+                    <tr><th>Name: <?php echo "$fname $lname"?></th></tr>
+                    <tr><td>Gender: <?php echo "$gender"?></td></tr>
+                    <tr><td>Age: <?php echo "$age"?></td></tr>
+                    <tr><td>Phone: <?php echo "$phoneNumber"?></td></tr>
+                    <tr><td>Email: <?php echo "$email"?></td></tr>
+                    <tr><td>State: <?php echo "$state"?></td></tr>
+                    <tr><td>Seeking: <?php echo "$seekGender"?></td></tr>
+                    <tr><td>Interest:
+                            <?php
+                                for($i = 0; $i < $indoor; $i++) {
+                                    echo "$indoor[i], ";
+                                }
+                            for($j = 0; $j < $outdoor; $j++) {
+                                echo "$outdoor[j], ";
+                            }
+                            ?></td></tr>
                 </table>
             </div>
+            <div class="col-lg-5" id="biography">
+                <h6 id="InputTitle6">Biography</h6>
+                <p><?php echo $biography?></p>
+            </div>
             <div id="adjustButton">
-                <button class="btn btn-primary ml-5">Back</button>
                 <button class="btn btn-primary" id="contact">Contact Me!</button>
             </div>
         </figcaption>
+        <img id="profilePic" class="img-fluid rounded"
+             src="http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/images/profile_pic.jpg"
+             alt="Profile Picture">
     </figure>
 </div>
 <script src="js/jquery.slim.min.js"></script>

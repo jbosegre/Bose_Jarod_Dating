@@ -1,3 +1,9 @@
+<!--
+    Jarod Bose
+    2/2/2018
+    Assignment 2 Dating site
+    interest page showing inputs for user's favorite hobby
+-->
 <?php
 /**
  * Created by PhpStorm.
@@ -7,13 +13,13 @@
  */
 
 //error reporting
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
+//ini_set('display_errors', 1);
+//error_reporting(E_ALL);
 
 //start session
+ob_start();
 session_start();
 ?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -140,43 +146,44 @@ session_start();
                             </label>
                         </div>
                     </div>
-                    <div id="adjustButton">
-                        <button class="btn btn-primary ml-5">Back</button>
-                        <button class="btn btn-primary" id="nextPage">Next</button>
+                    <a id="adjustButton">
+                        <a href="Profile_Summary.php"><button class="btn btn-primary" name="submit" type="submit">Next</button></a>
                     </div>
                 </fieldset>
             </form>
         </figcaption>
     </figure>
 </div>
-
 <?php
 if(!empty($_POST)) {
 
-    include('http://jbose.greenriverdev.com/IT328/Bose_Jarod_Dating/model/DataValidation.php');
+    require('../model/DataValidation.php');
 
     $isValid = true;
-    $inDoor = array("TV", "Movies", "Cooking", "Boards_Cards", "Puzzles", "Reading", "Video_Games", "Others");
-    $outDoor = array("Hiking", "Biking", "Swimming", "Collecting", "Walking", "Climbing", "Gardening", "Others");
+    $indoor = array("TV", "Movies", "Cooking", "Boards_Cards", "Puzzles", "Reading", "Video_Games", "Others");
+    $outdoor = array("Hiking", "Biking", "Swimming", "Collecting", "Walking", "Climbing", "Gardening", "Others");
 
-    if(isset($_POST["indoor[]"]) && validIndoor($_POST["indoor[]"], $inDoor))
+    if(isset($_POST["indoor[]"]) && validIndoor($_POST["indoor[]"], $indoor))
     {
         $_SESSION["indoor[]"] = $_POST["indoor[]"];
     }
-    else{
-        echo "Please enter your favorite indoor hobby or select others";
-        $isValid = false;
-    }
 
-    if(isset($_POST["outdoor[]"]) && validIndoor($_POST["outdoor[]"], $outDoor))
+    if(isset($_POST["outdoor[]"]) && validIndoor($_POST["outdoor[]"], $outdoor))
     {
         $_SESSION["outdoor[]"] = $_POST["outdoor[]"];
     }
-    else{
-        echo "Please enter your favorite outdoor hobby or select others";
-        $isValid = false;
+
+    if(isset($_POST['submit'])) {
+        if($isValid){
+            //clean the buffer for allowing to ridirect to next page
+            ob_end_clean();
+            //redirect to next page
+            header("Location: Profile_Summary.php");
+            exit;
+        }
     }
 }
+?>
 ?>
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/tether.min.js"></script>
