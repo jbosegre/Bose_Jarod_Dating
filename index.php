@@ -23,5 +23,29 @@ $f3->route('GET /', function()
 }
 );
 
+$f3->route('POST ./Personal_Information',
+    function()
+    {
+        global $template;
+        echo $template->render('pages/Profile.php');
+    }
+);
+
+$f3->route('POST ./Profile',
+    function()
+    {
+        global $template;
+        echo $template->render('pages/Interest.php');
+    }
+);
+
+$f3->route('POST ./Interest',
+    function()
+    {
+        global $template;
+        echo $template->render('pages/Profile_Summary.php');
+    }
+);
+
 //Run fat free
 $f3->run();

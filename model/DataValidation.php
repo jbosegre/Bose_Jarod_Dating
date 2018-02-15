@@ -12,7 +12,7 @@ error_reporting(E_ALL);
 
 function validName($alphabet)
 {
-    if (!preg_match("/^[a-z]$/i", $alphabet)) {
+    if (preg_match("/^[a-zA-Z'-]+$/", $alphabet)) {
         return false;
     }
     return true;
@@ -21,33 +21,33 @@ function validName($alphabet)
 function validAge($adult)
 {
     if (preg_match("/^[0-9]$/", $adult) && $adult > 18) {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
 function validPhone($usPhones)
 {
     if(preg_match("/^[0-9]{3}-[0-9]{3}-[0-9]{4}$/", $usPhones)) {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
 function validIndoor($inside, $inHobby)
 {
     if(in_array($inside, $inHobby))
     {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }
 
 function validOutdoor($outside, $outHobby)
 {
     if(in_array($outside, $outHobby))
     {
-        return true;
+        return false;
     }
-    return false;
+    return true;
 }

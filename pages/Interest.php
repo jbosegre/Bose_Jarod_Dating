@@ -5,6 +5,9 @@
     interest page showing inputs for user's favorite hobby
 -->
 <?php
+//start session
+ob_start();
+session_start();
 /**
  * Created by PhpStorm.
  * User: humme_000
@@ -13,13 +16,10 @@
  */
 
 //error reporting
-//ini_set('display_errors', 1);
-//error_reporting(E_ALL);
-
-//start session
-ob_start();
-session_start();
+ini_set('display_errors', 1);
+error_reporting(E_ALL);
 ?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -47,7 +47,7 @@ session_start();
     <figure id="border">
         <figcaption>
             <h1 class="ml-5"><br><strong>Interest</strong></h1>
-            <form action="" method="post">
+            <form action="./Profile_Summary.php" method="post">
                 <fieldset form="form-group">
                     <div class="form-group ml-lg-2">
                         <label class="d-block" id="InputTitle2">Indoor Activities</label>
@@ -155,7 +155,8 @@ session_start();
     </figure>
 </div>
 <?php
-if(!empty($_POST)) {
+if(!empty($_POST))
+{
 
     require('../model/DataValidation.php');
 
@@ -173,17 +174,17 @@ if(!empty($_POST)) {
         $_SESSION["outdoor[]"] = $_POST["outdoor[]"];
     }
 
-    if(isset($_POST['submit'])) {
+    if(isset($_POST['submit']))
+    {
         if($isValid){
-            //clean the buffer for allowing to ridirect to next page
-            ob_end_clean();
+            //clean the buffer for allowing to redirect to next page
+            ob_flush();
             //redirect to next page
             header("Location: Profile_Summary.php");
             exit;
         }
     }
 }
-?>
 ?>
 <script src="js/jquery.slim.min.js"></script>
 <script src="js/tether.min.js"></script>

@@ -6,6 +6,9 @@
 -->
 
 <?php
+//start session
+ob_start();
+session_start();
 /**
  * Created by PhpStorm.
  * User: humme_000
@@ -16,10 +19,6 @@
 //error reporting
 //ini_set('display_errors', 1);
 //error_reporting(E_ALL);
-
-//start session
-ob_start();
-session_start();
 
 $fname = $_SESSION['firstName'];
 $lname = $_SESSION['lastName'];
@@ -82,6 +81,8 @@ $biography = $_SESSION['biography'];
             </div>
             <div class="col-lg-5" id="biography">
                 <h6 id="InputTitle6">Biography</h6>
+                <br>
+                <br>
                 <p><?php echo $biography?></p>
             </div>
             <div id="adjustButton">
